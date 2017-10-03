@@ -3,5 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/vids-psg/vids-psg.git",
-  "author": "vids-psg"
+  "author": "vids-psg",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
 }
