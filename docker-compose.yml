@@ -5,3 +5,5 @@ services:
         build: ./vids-psg
         ports:
             - 8080:8080
+    db:
+        build: ./db
