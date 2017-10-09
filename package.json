@@ -4,6 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/vids-psg/vids-psg.git",
   "author": "vids-psg",
+  "license": "UNLICENSED",
+  "private": true,
   "scripts": {
     "start": "node index.js"
   },
