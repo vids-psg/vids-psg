@@ -5,7 +5,22 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  	<header id='title_header'>
+  		<img src='images/play_icon.png' id='play_icon' alt='play icon' />
+  		<h1><%= title %></h1>
+        <p>Welcome to <%= title %></p>
+        <div id='github_banner'>
+        	<a href='<%= github %>' target='about:blank'><img src='images/github_banner.png' alt='github banner' /></a>
+        </div>
+  	</header>
+  	<nav>
+  		<!-- navigation to go here -->
+  	</nav>
+  	<section>
+  		<header id='page_header'>About</header>
+  		<article>
+  			<p>Vids-psg is a video platform built with <a href='https://expressjs.com/' target='about:blank'>ExpressJS</a>. </p>
+  		</article>
+  	</section>
   </body>
 </html>

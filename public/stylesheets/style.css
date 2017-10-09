@@ -3,6 +3,28 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+a { color: #00B7FF; }
+
+#play_icon {
+	width: 100px;
+	height: auto;
+	padding: 0 20px;
+	float: left;
 }
+
+#title_header h1 {
+	font-weight: bold;
+	font-size: 5em;
+} #title_header p { font-size: 2em; }
+
+section	{
+	padding: 50px;
+} section p { font-size: 1.2em; }
+
+#page_header {
+	font-weight: bold;
+	font-size: 2em;	
+}
+
+#github_banner { position: absolute; right: 0; top: 0; }
+#github_banner img { width: 200px; height: auto; }
