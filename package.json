@@ -7,10 +7,18 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "node index.js"
+    "start": "node bin/www",
+    "build": "webpack"
   },
   "dependencies": {
+    "argon2": "^0.16.1",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.7",
     "express": "^4.16.1",
-    "pg": "^7.3.0"
+    "morgan": "^1.9.0",
+    "pg": "^7.3.0",
+    "serve-favicon": "^2.4.5",
+    "webpack": "^3.6.0"
   }
 }
