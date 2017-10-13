@@ -19,6 +19,7 @@
     "morgan": "^1.9.0",
     "pg": "^7.3.0",
     "serve-favicon": "^2.4.5",
-    "webpack": "^3.6.0"
+    "webpack": "^3.6.0",
+    "zxcvbn": "^4.4.2"
   }
 }
