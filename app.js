@@ -1,8 +1,5 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
@@ -12,16 +9,14 @@ var login = require('./routes/login');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+// for parsing json body data
 app.use(bodyParser.json());
+// for parsing urlencoded body data
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// static host of public folder contents for root
+app.use('/', express.static(path.join(__dirname, 'public')));
 // static link to zxcvbn script in node_modules
 app.use('/zxcvbn', express.static(path.join(__dirname, 'node_modules/zxcvbn/dist')));
 
@@ -30,14 +25,14 @@ app.use('/users', users);
 app.use('/login', login);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -46,5 +41,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+var port = process.env.PORT || 3000;
+app.listen(port);
+console.log("Listening on port " + port);
 
 module.exports = app;
