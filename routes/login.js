@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
 
 /* POST login page. login.ejs */
 router.post('/', function(req, res) {
-    console.log(req.body);
     if (!req.body) return res.sendStatus(400);
     if (!(req.body.username || req.body.password)) {
         return res.status(400).send("Missing username or password");
