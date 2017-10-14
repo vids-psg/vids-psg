@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // static host of public folder contents for root
 app.use('/', express.static(path.join(__dirname, 'public')));
-// static link to zxcvbn script in node_modules
+// static host of zxcvbn script folder in node_modules
 app.use('/zxcvbn', express.static(path.join(__dirname, 'node_modules/zxcvbn/dist')));
 
 app.use('/', index);
