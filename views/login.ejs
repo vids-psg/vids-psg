@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<header id='title_header'>
+  		<h1><%= title %></h1>
+  	</header>
+  	<nav>
+  		<!-- navigation to go here -->
+  	</nav>
+  	<section>
+  		<form method="post">
+            Username:<br>
+            <input type="text" id="username" name="username"><br>
+            Password:<br>
+            <input type="password" id="password" name="password"><br>
+            Password score:<br>
+            <div id="password-score" style="font-family:monospace">----</div><br>
+            Confirm password:<br>
+            <input type="password" id="password-confirm" name="password-confirm"><br>
+            <input type="submit" value="Submit">
+  		</form>
+  		<script src="/zxcvbn/zxcvbn.js"></script>
+  		<script>
+            document.getElementById('password').addEventListener('input', function() {
+                var result = zxcvbn(document.getElementById('password').value);
+                var strengthBar = "----";
+                if (result.score === 0) strengthBar = "----";
+                if (result.score === 1) strengthBar = "+---";
+                if (result.score === 2) strengthBar = "++--";
+                if (result.score === 3) strengthBar = "+++-";
+                if (result.score === 4) strengthBar = "++++";
+                document.getElementById('password-score').innerHTML = strengthBar;
+            });
+  		</script>
+  	</section>
+  </body>
+</html>
