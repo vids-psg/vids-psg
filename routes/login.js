@@ -1,5 +1,5 @@
 var express = require('express');
-var argon2 = require('argon2');
+var sodium = require('libsodium-wrappers-sumo');
 var db = require('../database');
 var router = express.Router();
 
@@ -21,14 +21,14 @@ router.post('/', function (req, res, next) {
         if (selectError) console.log(selectError);
         // If username found
         if (selectResponse.rowCount > 0) {
-            argon2.verify(selectResponse.rows[0].password, req.body.password).then(success => {
-                if (success) {
-                    res.send('Login success');
-                }
-                else res.send('Username or password incorrect');
-            });
+            if (sodium.crypto_pwhash_str_verify(selectResponse.rows[0].password, req.body.password)) {
+                    res.send("Login success");
+            }
+            else {
+                res.send("Username or password incorrect");
+            }
         }
-        else res.send('Username or password incorrect');
+        else res.send("Username or password incorrect");
     });
 });
 

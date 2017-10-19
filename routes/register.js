@@ -1,5 +1,5 @@
 var express = require('express');
-var argon2 = require('argon2');
+var sodium = require('libsodium-wrappers-sumo');
 var db = require('../database');
 var router = express.Router();
 
@@ -18,20 +18,26 @@ router.post('/', function (req, res) {
     }
     // Check for password match
     if (req.body.password != req.body.password_confirm)
-        return res.send('Passwords do not match');
+        return res.send("Passwords do not match");
     var username = req.body.username;
     // Check if username exists
     db.query('SELECT userID from users WHERE username=$1', [username], (selectError, selectResponse) => {
+        if (selectError) console.log(selectError);
         // If username exists
         if (selectResponse.rowCount < 1) {
-            argon2.hash(req.body.password).then(hash => {
+            let hash;
+            if (hash = sodium.crypto_pwhash_str(req.body.password, sodium.crypto_pwhash_OPSLIMIT_INTERACTIVE, sodium.crypto_pwhash_MEMLIMIT_INTERACTIVE)) {
                 db.query('INSERT INTO users(username, password) VALUES ($1, $2)', [username, hash], (insertError, insertResponse) => {
-                    if (insertError) console.log(insertError);
+                    if (insertError) {
+                        console.log(insertError);
+                    }
+                    else {
+                        res.send("Registered");
+                    }
                 });
-                res.send('Registered');
-            });
+            }
         }
-        else res.send('Username exists');
+        else res.send("Username exists");
     });
 });
 
