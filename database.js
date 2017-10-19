@@ -1,9 +1,9 @@
 const { Client } = require('pg');
 var client = new Client({
-    user: 'vids-psg',
-    password: 'vids-psg',
+    user: 'vids_psg',
+    password: 'vids_psg',
     host: 'localhost',
-    database: 'vids-psg'
+    database: 'vids_psg'
 });
 
 client.connect();
