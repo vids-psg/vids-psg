@@ -8,14 +8,18 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "build": "webpack"
   },
   "dependencies": {
-    "argon2": "^0.16.1",
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
     "express": "^4.16.1",
-    "webpack": "^3.6.0",
+    "libsodium-wrappers-sumo": "^0.7.2",
     "zxcvbn": "^4.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1",
+    "webpack": "^3.8.1"
   }
 }

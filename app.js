@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
+var register = require('./routes/register');
 
 var app = express();
 
@@ -17,12 +18,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // static host of public folder contents for root
 app.use('/', express.static(path.join(__dirname, 'public')));
-// static host of zxcvbn script folder in node_modules
-app.use('/zxcvbn', express.static(path.join(__dirname, 'node_modules/zxcvbn/dist')));
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
+app.use('/register', register);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
