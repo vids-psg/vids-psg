@@ -56,9 +56,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
-# General
-.vagrant/
-
-# Log files (if you are creating logs in debug mode, uncomment this)
-# *.logs
